@@ -11,7 +11,12 @@ public class Vehicule {
    protected String description;
  List<Vehicule> listeVehicule = new ArrayList<>();
 
+public Vehicule(){
+
+}
+
    public Vehicule(String name,String color,int nbrRoue,int place){
+
     this.name = name;
     this.color = color;
     this.nbrRoue = nbrRoue;
@@ -69,41 +74,48 @@ public class Vehicule {
 
    }
 
+   public double getPrice(){
+    return this.price;
+   }
+
+   public void setPrice(double prix){
+    if (prix >0) {
+        this.price = prix;
+        
+    }
+   }
+
    public String toString(){
     return "Nom : "+getNom()+"\n"+
            "Couleur : "+getColor()+"\n"+
            "Nombre Roue "+getNbRoue()+"\n"+
            "Nombre de Places :"+getPlace()+"\n"+
-           "Prix : "+"\n"+
+           "Prix : "+getPrice()+"\n"+
            "Description : "+description;
    }
 
-   public void ajouterVehicule(Vehicule v){
+   public void ajouterVehicule(List<Vehicule> listeVehicule,Vehicule v){
     listeVehicule.add(v);   
    }
 
    // fonction qui retourne uniquement les noms des vehicules dans un tableau de type String
-   public String [] getNomDesVehicules(List<Vehicule> listv){
-     String [] tabNom = new String[0];
-    for(int i = 0; i<listv.size();i++){
-        Vehicule unVehicule = listv.get(i);
+   public List<String> getNomDesVehicules(List<Vehicule> listeVehicule){
+    List<String> nomsVehicules = new ArrayList<>();
+    for(Vehicule unVehicule:listeVehicule){
         String nomVehicule = unVehicule.getNom();
-        tabNom[i] = nomVehicule;
+        nomsVehicules.add(nomVehicule);
     }
-    return tabNom;
+    return nomsVehicules;
    }
 
    // fonction qui retourne la somme total de tous les vehicule d'une liste donnée.
-   public double sommeDesVehicules(List<Vehicule> listv){
+   public double sommeDesVehicules(List<Vehicule> listeVehicule){
     double somme = 0.0;
-    for(int i=0; i<listv.size();i++){
-        if (listv.isEmpty()) {
-            System.out.println("La liste des vehicules est VIDE!");
-            somme +=0; 
-        } else {
-            Vehicule unVehicule = listv.get(i);
-            somme+= unVehicule.price;
-        }
+    for(int i=0; i<listeVehicule.size();i++){
+        if (!listeVehicule.isEmpty()) {
+         somme = somme + listeVehicule.get(i).getPrice();
+          
+        } 
 
     }
     return somme;
@@ -140,7 +152,44 @@ public class Vehicule {
    }*/ 
 
 
+public static void main(String[] args) {
+    Vehicule v1 = new Vehicule("vehicule 1", "color 1", 2, 4);
+    System.out.println(v1.toString());
 
+    Vehicule v2 = new Vehicule();
+    System.out.println(v2.toString());
+
+ 
+    Vehicule v3 = new Vehicule("Vehicule 3 ", "color3", 4, 23, 45, "Camion");
+    System.out.println(v3.toString());
+
+    Vehicule v4 = new Vehicule();
+    System.out.println(v4.toString());
+    Vehicule v5 = new Vehicule();
+
+    Vehicule v6 = new Vehicule("Vehicule 6 ", "color3", 4, 23, 45, "Camion");
+
+
+    List <Vehicule> listVehi = new ArrayList<>();
+    listVehi.add(v1);
+    listVehi.add(v2);
+    listVehi.add(v3);
+    listVehi.add(v4);
+    listVehi.add(v6);
+   
+
+System.out.println(v1.sommeDesVehicules(listVehi));
+v1.ajouterVehicule(listVehi,v5);
+System.out.println(v1.rechercheUnVehicule(listVehi,v5));
+//System.out.println(v1.getNomDesVehicules(listVehi));
+List<String> listeNomsVehicules = v1.getNomDesVehicules(listVehi);
+
+System.out.println("NOM DES VEHICULES");
+for (String item : listeNomsVehicules) {
+    System.out.println(item);
+    
+}
+}
 
 
 
