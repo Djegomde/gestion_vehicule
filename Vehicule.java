@@ -11,18 +11,22 @@ public class Vehicule {
    protected String description;
  List<Vehicule> listeVehicule = new ArrayList<>();
 
+
+ // Constucteur par defaut : initialise tous les attributs avec leur valeur par default
+ // Nous pouvons également initialiser par nos propres valeurs en appelant le constructeur complet
+ // Avec le mot clé this(...);
 public Vehicule(){
 
 }
-
+// Constructeur spécifique : certains des attributs sont initialisés avec leur valeur par defaut
    public Vehicule(String name,String color,int nbrRoue,int place){
-
     this.name = name;
     this.color = color;
     this.nbrRoue = nbrRoue;
     this.place = place;
    }
 
+   // Constructeur qui est complet : qui initialise tous les attributs de la classe
    public Vehicule(String name,String color,int nbrRoue,int place,double price, String description){
     this.name = name;
     this.color = color;
@@ -83,6 +87,13 @@ public Vehicule(){
         this.price = prix;
         
     }
+   }
+   public String getDescription(){
+    return this.description;
+   }
+
+   public void setDescription(String desc){
+    this.description = desc;
    }
 
    public String toString(){
@@ -152,7 +163,7 @@ public Vehicule(){
    }*/ 
 
 
-public static void main(String[] args) {
+/*public static void main(String[] args) {
     Vehicule v1 = new Vehicule("vehicule 1", "color 1", 2, 4);
     System.out.println(v1.toString());
 
@@ -189,7 +200,7 @@ for (String item : listeNomsVehicules) {
     System.out.println(item);
     
 }
-}
+}*/
 
 
 
