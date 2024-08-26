@@ -20,6 +20,7 @@ public class Test {
         Vehicule vTerrestre2 = new VehiculeTerrestre("vehicule ter", "noir", 2, 4, 245, "vehicule du terre");
         System.out.println(vTerrestre2);
         System.out.println("");
+
         // vehicule terre avec Moteur sans paramètre et type Vehicule terrestre
         VehiculeTerrestre vTM = new VehiculeMotor();
         System.out.println(vTM.toString());
@@ -46,7 +47,7 @@ public class Test {
 
 /* La partie des listes des vehicules 
 Dans cette partie nous allons creer un objet de type VEHICULE MERE 
-et une liste du même type pour essayer de mettre tous types de vehicules à l'interieur
+et une liste du même type pour  mettre tous types de vehicules à l'interieur
 et faire toutes les opérations necessaires: 
  */        
 Vehicule vehiculeMere = new Vehicule();
@@ -83,6 +84,7 @@ vTerrestre1.ajouterVehicule(listevehiculeTerrestres, vTM2);
 vTerrestre1.ajouterVehicule(listevehiculeTerrestres, vTM3);
 vTerrestre1.ajouterVehicule(listevehiculeTerrestres, velo1);
 vTerrestre1.ajouterVehicule(listevehiculeTerrestres, vAerien1);
+
 for (Vehicule vehicule : listevehiculeTerrestres) {
     System.out.println(vehicule.description);
     
@@ -90,7 +92,61 @@ for (Vehicule vehicule : listevehiculeTerrestres) {
 
 System.out.println("SOMME TOTAL TERRESTRE = "+vTerrestre1.sommeDesVehicules(listevehiculeTerrestres));
 
- 
+List<String> listeNomVehiculeAerien = new ArrayList<>();
+List<String> listeNomVehiculeTerrestre = new ArrayList<>();
+List<String> listeNomVehiculeMotor = new ArrayList<>();
+List<String> listeNomVehiculeSansMotor = new  ArrayList<>();
+
+for (int i = 0; i < listesVehicules.size(); i++) {
+    String nomClasse = listesVehicules.get(i).getClass().getName();
+    //System.out.println(nomClasse);
+    
+    switch (nomClasse) {
+        case "VehiculeAerien":
+        listeNomVehiculeAerien.add(nomClasse);
+            break;
+        case "VehiculeTerrestre":
+        listeNomVehiculeTerrestre.add(nomClasse);
+            break;
+        case "VehiculeMotor":
+        listeNomVehiculeTerrestre.add(nomClasse);
+        listeNomVehiculeMotor.add(nomClasse);
+        break;
+        case "VehiculeSansMotor":
+        listeNomVehiculeTerrestre.add(nomClasse);
+        listeNomVehiculeSansMotor.add(nomClasse);
+        break;
+        default:
+            System.out.println("pas liste");
+            break;
+    }
+    
+}
+ System.out.println("");
+ System.out.println("NOM DES CLASSES VEHICULEAERIENS");
+ System.out.println("");
+ for (String string : listeNomVehiculeAerien) {
+    System.out.println(string);
+ }
+
+ System.out.println("NOM DES CLASSES VEHICULETERRESTRES");
+ System.out.println("");
+ for (String string : listeNomVehiculeTerrestre) {
+    System.out.println(string);
+    
+ }
+ System.out.println("NOM DES CLASSES VEHICULEMOTOR");
+ System.out.println("");
+
+ for (String string : listeNomVehiculeMotor) {
+    System.out.println(string);
+ }
+ System.out.println("NOM DES CLASSES VEHICULESANSMOTOR");
+ for (String string : listeNomVehiculeSansMotor) {
+    System.out.println(string);
+    
+ }
+
 
  
 
