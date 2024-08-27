@@ -1,4 +1,4 @@
-public class VehiculeTerrestre extends Vehicule {
+public abstract class VehiculeTerrestre extends Vehicule {
 
     public VehiculeTerrestre (String name,String color,int nbrRoue,int place,double price, String description){
         super(name, color, nbrRoue, place, price, description);

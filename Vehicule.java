@@ -1,16 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
+import enums.*;
 
-public class Vehicule {
+public abstract class Vehicule  {
     protected String name;
     protected String color;
-   // protected String mark; dans vehicule terreste
-   protected int nbrRoue;
-   protected int place;
-   protected double price;
-   protected String description;
- List<Vehicule> listeVehicule = new ArrayList<>();
-
+    protected double price;
+    protected EtatVehicule etatVehicule;
+     protected String description;
 
  // Constucteur par defaut : initialise tous les attributs avec leur valeur par default
  // Nous pouvons également initialiser par nos propres valeurs en appelant le constructeur complet
@@ -19,19 +16,16 @@ public Vehicule(){
 
 }
 // Constructeur spécifique : certains des attributs sont initialisés avec leur valeur par defaut
-   public Vehicule(String name,String color,int nbrRoue,int place){
+   public Vehicule(String name,String color){
     this.name = name;
     this.color = color;
-    this.nbrRoue = nbrRoue;
-    this.place = place;
+
    }
 
    // Constructeur qui est complet : qui initialise tous les attributs de la classe
-   public Vehicule(String name,String color,int nbrRoue,int place,double price, String description){
+   public Vehicule(String name,String color,int place,double price, String description){
     this.name = name;
     this.color = color;
-    this.nbrRoue = nbrRoue;
-    this.place = place;
     this.price = price;
     this.description = description;
 
@@ -56,27 +50,8 @@ public Vehicule(){
 
    }
 
-   public int getNbRoue(){
-    return this.nbrRoue;
-   }
 
-   public void setNbRoue(int nb){
-    if (nb>0) {
-        this.nbrRoue = 0;
-        
-    }
-   }
 
-   public int getPlace(){
-    return this.place;
-   }
-
-   public void setPlace(int pl){
-    if (pl > 0) {
-    this.place = pl;      
-    }
-
-   }
 
    public double getPrice(){
     return this.price;
@@ -99,11 +74,11 @@ public Vehicule(){
    public String toString(){
     return "Nom : "+getNom()+"\n"+
            "Couleur : "+getColor()+"\n"+
-           "Nombre Roue "+getNbRoue()+"\n"+
-           "Nombre de Places :"+getPlace()+"\n"+
            "Prix : "+getPrice()+"\n"+
-           "Description : "+description;
+           "Description : "+getDescription();
    }
+//Permet de donner la dimension d'un vehicule(Longueur, Largeur, Hauteur)
+   public abstract int dimension();
 
    public void ajouterVehicule(List<Vehicule> listeVehicule,Vehicule v){
     listeVehicule.add(v);   
@@ -161,52 +136,6 @@ public Vehicule(){
 }
 
    }*/ 
-
-
-/*public static void main(String[] args) {
-    Vehicule v1 = new Vehicule("vehicule 1", "color 1", 2, 4);
-    System.out.println(v1.toString());
-
-    Vehicule v2 = new Vehicule();
-    System.out.println(v2.toString());
-
- 
-    Vehicule v3 = new Vehicule("Vehicule 3 ", "color3", 4, 23, 45, "Camion");
-    System.out.println(v3.toString());
-
-    Vehicule v4 = new Vehicule();
-    System.out.println(v4.toString());
-    Vehicule v5 = new Vehicule();
-
-    Vehicule v6 = new Vehicule("Vehicule 6 ", "color3", 4, 23, 45, "Camion");
-
-
-    List <Vehicule> listVehi = new ArrayList<>();
-    listVehi.add(v1);
-    listVehi.add(v2);
-    listVehi.add(v3);
-    listVehi.add(v4);
-    listVehi.add(v6);
-   
-
-System.out.println(v1.sommeDesVehicules(listVehi));
-v1.ajouterVehicule(listVehi,v5);
-System.out.println(v1.rechercheUnVehicule(listVehi,v5));
-//System.out.println(v1.getNomDesVehicules(listVehi));
-List<String> listeNomsVehicules = v1.getNomDesVehicules(listVehi);
-
-System.out.println("NOM DES VEHICULES");
-for (String item : listeNomsVehicules) {
-    System.out.println(item);
-    
-}
-}*/
-
-
-
-
-
-
 
 
 }

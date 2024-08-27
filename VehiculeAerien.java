@@ -9,6 +9,7 @@ public class VehiculeAerien extends Vehicule {
     public VehiculeAerien(){
         
     }
+    
 
     public String getType(){
         return this.type;

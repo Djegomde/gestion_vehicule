@@ -1,8 +1,11 @@
-public class VehiculeMotor  extends VehiculeTerrestre{
-    private String carburant;// Type Enum plutard
-    private int vitesse;
-    private String  numeroPlaque;
-    private boolean buttonAllumer;
+public abstract class VehiculeMotor  extends VehiculeTerrestre{
+
+    protected String carburant;// Type Enum plutard
+    protected int vitesse;
+    protected String  numeroPlaque;
+    protected double poids;
+    protected String boiteVitesse;// Automatique ou manuelle
+
      
 
     public VehiculeMotor(String name,
@@ -48,12 +51,7 @@ public String toString(){
         this.vitesse = v;
 
     }
-    public boolean getButton(){
-        return this.buttonAllumer;
-    }
-    public void setButton(boolean commande){
-        this.buttonAllumer = commande;
-    }
+ 
 
     public String getNumeroPlaq(){
         return this.numeroPlaque;
@@ -63,13 +61,7 @@ public String toString(){
         this.numeroPlaque  = numP;
     }
 
-    public void allumer(){
-        if (!getButton()) {
-            System.out.println("vehicule alluuuumer");            
-        }else{
-            System.out.println("vehicule eteindre ");
-        }
-    }
+    
 
     public void deplacer(){
         int vitessEngage = getVitesse();
